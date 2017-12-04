@@ -20,5 +20,5 @@ before_deploy:
 deploy:
   provider: releases
   api_key: $GH_API_KEY
-  file: dnsseed
+  file: releases/dnsseed
   skip_cleanup: true
