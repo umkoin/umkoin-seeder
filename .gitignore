@@ -1,5 +1,5 @@
 *.o
 *.log
-dnsseed*
-releases/dnsseed*
+dnsseed.*
+releases/dnsseed.*
 .vscode
