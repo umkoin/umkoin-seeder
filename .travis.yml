@@ -1,0 +1,24 @@
+sudo: required
+dist: artful
+os: linux
+language: minimal
+env:
+  global:
+    - MAKEJOBS=-j2
+  matrix:
+    - HOST=x86_64-unknown-linux-gnu PACKAGES="build-essential libboost-all-dev libssl-dev" GOAL="install"
+install:
+  - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get update; fi
+  - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES; fi
+after_script:
+  - echo $TRAVIS_COMMIT_RANGE
+  - echo $TRAVIS_COMMIT_LOG
+before_deploy:
+  - git config --local user.name "Igor Gunia"
+  - git config --local user.email "vmta@yahoo.com"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+deploy:
+  provider: releases
+  api_key: $GH_API_KEY
+  file: dnsseed
+  skip_cleanup: true
