@@ -41,7 +41,7 @@ e-mail address (with the @ part replaced by .) using -m.
 DOWNLOADING
 -----------
 
-$ git clone https://github.com/vmta/umkoin-seeder.git
+$ git clone https://github.com/umkoin/umkoin-seeder.git
 
 COMPILING
 ---------
