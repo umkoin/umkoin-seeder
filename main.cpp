@@ -82,17 +82,17 @@ public:
           host = optarg;
           break;
         }
-        
+
         case 'm': {
           mbox = optarg;
           break;
         }
-        
+
         case 'n': {
           ns = optarg;
           break;
         }
-        
+
         case 't': {
           int n = strtol(optarg, NULL, 10);
           if (n > 0 && n < 1000) nThreads = n;
@@ -397,14 +397,14 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"dnsseed.umk.ua-moloko.com", ""};
-static const string testnet_seeds[] = {"dnsseed.umk.ua-moloko.com",
+static const string mainnet_seeds[] = {"dnsseed.umkoin.org", ""};
+static const string testnet_seeds[] = {"dnsseed.umkoin.org",
                                        ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 6333), true);
+    db.Add(CService("klfchu53kxun6zx5.onion", 6333), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
