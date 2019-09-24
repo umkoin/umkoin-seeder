@@ -8,7 +8,8 @@ jobs:
           name: Prepare build environment
           command: |
             PACKAGES="build-essential libboost-all-dev libssl-dev"
-            apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES
+            sudo apt-get update
+            sudo apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES
   Build-Code:
     docker:
       - image: circleci/buildpack-deps:18.04
