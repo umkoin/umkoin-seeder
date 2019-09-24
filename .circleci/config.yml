@@ -1,0 +1,29 @@
+version: 2.1
+jobs:
+  Prepare-Build-Environment:
+    docker:
+      - image: circleci/buildpack-deps:18.04
+    steps:
+      - run:
+          name: Prepare build environment
+          command: |
+            PACKAGES="build-essential libboost-all-dev libssl-dev"
+            apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES
+  Build-Code:
+    docker:
+      - image: circleci/buildpack-deps:18.04
+    steps:
+      - checkout
+      - run:
+          name: Build code
+          command: |
+            make
+
+workflows:
+  version: 2
+  Go_Live:
+    jobs:
+      - Prepare-Build-Environment
+      - Build-Code:
+          requires:
+            - Prepare-Build-Environment
