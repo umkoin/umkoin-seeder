@@ -1,5 +1,5 @@
 sudo: required
-dist: artful
+dist: bionic
 os: linux
 language: minimal
 env:
